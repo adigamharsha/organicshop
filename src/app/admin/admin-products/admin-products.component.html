@@ -1,6 +1,6 @@
 <p><a routerLink="/admin/products/new" class="btn btn-primary">Product Form</a></p>
 <input #query (keyup)="filter(query)" type="text" class="form-control" placeholder="Search...">
-<table class="table table-striped" [svData]="filteredProducts" #sv="svDataTable" [svRowsOnPage]="5">
+<table class="table table-striped" [svData]="filteredProducts" #sv="svDataTable" [svRowsOnPage]="5" svSortBy="title" svSort>
     <thead>
         <tr>
             <th style="width: 20%">
