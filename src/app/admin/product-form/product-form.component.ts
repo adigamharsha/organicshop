@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService } from 'src/app/category.service';
 import { map, take } from 'rxjs/operators';
 import { ProductService } from 'src/app/product.service';
@@ -11,11 +11,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
+  // tslint:disable-next-line: no-input-rename
   product = {};
   id;
 
   constructor(private category: CategoryService, private productService: ProductService, private router: Router,
-              private route: ActivatedRoute) {
+    private route: ActivatedRoute) {
     this.categories$ = this.category.getCategories().valueChanges();
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
@@ -36,7 +37,7 @@ export class ProductFormComponent implements OnInit {
   delete() {
 
     // tslint:disable-next-line: curly
-    if (!confirm('are you sure to delete the product'))  return;
+    if (!confirm('are you sure to delete the product')) return;
     this.productService.delete(this.id);
     this.router.navigate(['/admin/products']);
 

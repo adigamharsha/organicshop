@@ -28,6 +28,10 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
 import {CustomFormsModule} from 'ng2-validation';
 import {DataTableModule} from 'ng-angular8-datatable';
+import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingcartService } from './shoppingcart.service';
+import { ProductquantityComponent } from './productquantity/productquantity.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +45,10 @@ import {DataTableModule} from 'ng-angular8-datatable';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductsFilterComponent,
+    ProductCardComponent,
+    ProductquantityComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +67,8 @@ import {DataTableModule} from 'ng-angular8-datatable';
     UserService,
     AdminAuthguard,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingcartService
   ],
   bootstrap: [AppComponent]
 })

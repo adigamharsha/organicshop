@@ -46,13 +46,14 @@
 
     </div>
     <div class="col-md-6">
-        <div *ngIf="product.title" class="card" style="width: 18rem;">
-            <img [src]="product.imageUrl" *ngIf="product.imageUrl" class="card-img-top">
+        <div *ngIf="product.title" class="card" style="width: 15rem;">
+            <img [src]="product.imageUrl" class="card-img-top img-thumbnail"
+                *ngIf="product.imageUrl" alt="{{product.title}}">
             <div class="card-body">
-                <h4 class="card-title">{{product.title}}</h4>
-                <p class="card-text">{{product.price | currency:'USD':true}}</p>
-                <p class="card-text">{{product.category}}</p>
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.price | currency:'USD':true}}</p>        
             </div>
+            
         </div>
     </div>
 </div>
