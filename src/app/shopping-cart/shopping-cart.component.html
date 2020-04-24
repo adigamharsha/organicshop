@@ -1,7 +1,10 @@
 <h1>Shopping Cart</h1>
-<ng-container class="row col-10">
-    <p>You have {{getQuantity()}} items in ur shopping Cart. <button *ngIf="items.length" (click)="clearCart()"
-            style="margin-left:900px" class="btn btn-danger btn-sm">Clear Shopping Cart</button></p>
+<div class="card" style="width: 80%;">
+    <div class="card-body">
+        <p>You have {{getQuantity()}} items in ur shopping Cart. </p>
+        <button *ngIf="items.length" (click)="clearCart()"
+                style="margin-left:700px" class="btn btn-danger btn-sm">Clear Shopping Cart</button>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -33,7 +36,13 @@
                 <th></th>
                 <th class="text-center">{{getTotalPrice() | currency:'USD':true}}</th>
             </tr>
+
+            <tr>
+                <th colspan="4">
+                    <a *ngIf="items.length" type="button" routerLink="/check-out" class="btn btn-secondary btn-sm">
+                        Check Out </a>
+                </th>
+            </tr>
         </tfoot>
     </table>
-    <a *ngIf="items.length"  routerLink="/check-out" (click)="checkOut()" class="btn btn-secondary btn-sm">  Check Out  </a>
-</ng-container>
+</div>
