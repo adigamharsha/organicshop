@@ -28,8 +28,12 @@ export class ProductCardComponent implements OnInit {
 
   getQuantity() {
     if (!this.shoppingCart) { return 0; }
+    //console.log(this.shoppingCart);
+    if (this.shoppingCart.items) {
     const item = this.shoppingCart.items[this.product.key];
     return item ? item.quantity : 0;
+    }else return 0;
+    
   }
 
 }

@@ -28,11 +28,12 @@ export class ShoppingcartService {
   }
 
   async getOrCreateCart(): Promise<string> {
-    const cartId = localStorage.getItem('cartId');
-    if (cartId) { return cartId; }
+    const cartId = localStorage.getItem('cartId');    
+    if (!cartId) { 
     const result = await this.create();
     localStorage.setItem('cartId', result.key);
     return result.key;
+    }else return cartId; 
   }
 
   async addTocart(product) {
@@ -56,9 +57,11 @@ export class ShoppingcartService {
       // tslint:disable-next-line: semicolon
       // tslint:disable-next-line: prefer-const
       if (item.key === null) {
+        if(product){
         this.db.list('/shopping-carts/' + cartId + '/items').set(
           // tslint:disable-next-line: max-line-length
           product.key, new ShoppingCartItem(product.key, product.payload.val().title, product.payload.val().price, product.payload.val().imageUrl, 1));
+        }
       } else {
         let quantity = (item.payload.val().quantity || 0) + change;
         // tslint:disable-next-line: align

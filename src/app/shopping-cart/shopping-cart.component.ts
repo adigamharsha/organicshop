@@ -17,6 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private cartService: ShoppingcartService) { }
 
   async ngOnInit() {
+    console.log('called');
     (await this.cartService.getCart()).valueChanges().subscribe((cart: any) => {
       this.items = [];
       if (!cart) return;
@@ -30,6 +31,15 @@ export class ShoppingCartComponent implements OnInit {
     // tslint:disable-next-line: forin
     for (let item in this.items) {
       sum += (+this.items[item].price * this.items[item].quantity);
+    }
+    return sum;
+  }
+
+  getQuantity() {
+    let sum: number = 0;
+    // tslint:disable-next-line: forin
+    for (let item in this.items) {
+      sum += this.items[item].quantity;
     }
     return sum;
   }

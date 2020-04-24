@@ -22,11 +22,7 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private categoryService: CategoryService,
     private route: ActivatedRoute,
-    private shoppingCartService: ShoppingcartService) { }
-
-  async ngOnInit() {
-    this.cart$ = (await this.shoppingCartService.getCart()).valueChanges();
-
+    private shoppingCartService: ShoppingcartService) {
     this.productService.getProducts().snapshotChanges().pipe(switchMap((products: any) => {
       this.products = products;
       return this.route.queryParamMap;
@@ -36,7 +32,11 @@ export class ProductsComponent implements OnInit {
         this.filteredProducts = (this.category) ? this.products.filter(p => p.payload.val().category.toLowerCase() === this.category) :
           this.products;
       });
+  }
 
+  async ngOnInit() {
+    console.log('called');
+    this.cart$ = (await this.shoppingCartService.getCart()).valueChanges();
   }
 
 }

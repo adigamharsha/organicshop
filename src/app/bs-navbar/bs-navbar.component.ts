@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { AppUser } from '../models/AppUser';
 import { ShoppingcartService } from '../shoppingcart.service';
+import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
   selector: 'bs-navbar',
@@ -35,6 +36,8 @@ export class BsNavbarComponent implements OnInit {
       }
     });
   }
+
+  
 
   logout() {
     this.afauth.logout();
